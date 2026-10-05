@@ -1,0 +1,45 @@
+CHOPEASY - sampler leve para FL Studio (VST3)
+=============================================
+
+INSTALACAO SEM PROGRAMAS (o GitHub compila para voce, de graca)
+Voce so precisa de um navegador e uma conta gratis no github.com.
+
+1. Crie a conta em github.com (se ainda nao tiver).
+2. Clique em "+" (canto superior direito) > New repository.
+   Nome: ChopEasy. Deixe como Public (ou Private, tanto faz). Clique em Create repository.
+3. Na pagina do repositorio clique em "uploading an existing file".
+   Extraia este zip, abra a pasta e ARRASTE TUDO que esta dentro dela
+   (CMakeLists.txt, a pasta Source, Instalar.bat, etc.) para a pagina.
+   Espere carregar e clique em "Commit changes".
+4. Clique na aba "Actions" > "set up a workflow yourself".
+   Apague o texto que aparecer, abra o arquivo COLE-NO-GITHUB.yml com o Bloco de Notas,
+   copie tudo e cole la. Clique em "Commit changes..." e confirme.
+5. Ainda em "Actions", clique na execucao que apareceu ("Compilar ChopEasy").
+   Espere uns 5 a 10 minutos ate aparecer um check verde.
+   (Se aparecer um X vermelho: clique nele, copie a mensagem de erro e me mande.)
+6. Role a pagina ate o final, em "Artifacts", e baixe "ChopEasy-Windows".
+7. Extraia o zip baixado e de dois cliques em Instalar.bat (ele pede permissao de administrador).
+8. No FL Studio: Options > Manage plugins > Find plugins.
+   Depois: Channels > Add one > ChopEasy.
+
+COMO USAR
+- Arraste um arquivo de audio para a janela (ou "Carregar sample").
+- O plugin DETECTA AS BATIDAS SOZINHO e ja coloca os cortes nos pads (ate 16).
+  Mostra "X cortes detectados automaticamente".
+- Quer mais ou menos cortes? Mexa na "Sensibilidade dos cortes" (recalcula na hora).
+  O botao "Detectar" refaz a deteccao. 4 / 8 / 16 fazem cortes iguais. "Aleatorio" sorteia.
+- Se o sample nao tiver batidas claras (pad, vocal longo), ele usa cortes iguais.
+- Ajuste manual: no modo CORTAR, clique na waveform para marcar o inicio do pad selecionado
+  e arraste para ajustar. O corte de cada pad vai ate o inicio do proximo.
+- Modo SCRATCH: arraste para os lados na waveform. Parado = silencio.
+- Tom, volume, reverso, sincronizar com o BPM do projeto (muda velocidade e tom juntos).
+- Os pads respondem a notas MIDI de 36 (C3 no FL Studio) ate 51: use o piano roll ou um controlador.
+- Idioma: botao EN / PT-BR no canto superior direito.
+
+O ".DLL"
+O plugin sai em VST3, o formato do FL Studio hoje (por dentro e uma DLL). O VST2 puro exige
+um SDK que a Steinberg nao distribui mais.
+
+OPCIONAL (avancado)
+build.bat compila no seu proprio PC, mas precisa de Visual Studio, Git e CMake instalados.
+Nao precisa se voce usar o GitHub como acima.
