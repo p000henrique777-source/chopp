@@ -1,0 +1,29 @@
+name: Compilar ChopEasy
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar
+        run: cmake -S . -B build -A x64
+
+      - name: Compilar
+        run: cmake --build build --config Release --target ChopEasy_VST3 --parallel 4
+
+      - name: Montar pacote
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path package | Out-Null
+          Copy-Item -Recurse build/ChopEasy_artefacts/Release/VST3/ChopEasy.vst3 package/ChopEasy.vst3
+          Copy-Item Instalar.bat package/Instalar.bat
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ChopEasy-Windows
+          path: package
